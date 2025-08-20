@@ -20,12 +20,20 @@
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\drawable\\ic_launcher_background.xml"
     },
     {
+        "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-anydpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-anydpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-anydpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-anydpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\drawable_ic_launcher_foreground.xml.flat",
@@ -38,14 +46,6 @@
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "com.PzmuV1517.ha_glyph.app-debug-33:/layout_activity_main.xml.flat",
-        "source": "com.PzmuV1517.ha_glyph.app-main-35:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.PzmuV1517.ha_glyph.app-debug-33:/mipmap-anydpi_ic_launcher_round.png.flat",
-        "source": "com.PzmuV1517.ha_glyph.app-main-35:/mipmap-anydpi/ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-hdpi_ic_launcher_round.png.flat",
@@ -68,10 +68,6 @@
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "com.PzmuV1517.ha_glyph.app-debug-33:/mipmap-anydpi_ic_launcher.png.flat",
-        "source": "com.PzmuV1517.ha_glyph.app-main-35:/mipmap-anydpi/ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
@@ -80,11 +76,11 @@
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\layout\\item_device.xml"
     },
     {
-        "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xxxhdpi\\ic_launcher_round.png"
     }
 ]

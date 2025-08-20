@@ -164,12 +164,12 @@ public class HomeAssistantToyService extends Service {
         // Update immediately
         updateDeviceState();
 
-        // Set up periodic updates every 30 seconds
+        // Set up periodic updates every 2 seconds for real-time monitoring
         updateRunnable = new Runnable() {
             @Override
             public void run() {
                 updateDeviceState();
-                updateHandler.postDelayed(this, 30000); // 30 seconds
+                updateHandler.postDelayed(this, 2000); // 2 seconds
             }
         };
         updateHandler.post(updateRunnable);
