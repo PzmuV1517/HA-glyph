@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HA-Glyph</string>
+    <string name="toy_name">Home Assistant Toggle</string>
+    <string name="toy_summary">Toggle your Home Assistant devices with the Glyph Button</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nothing.ketchum" > <!-- 其他必要的配置（如 permissions 或 components）可以在這裡添加 -->
+    <uses-sdk android:minSdkVersion="34" />
+
+</manifest>
