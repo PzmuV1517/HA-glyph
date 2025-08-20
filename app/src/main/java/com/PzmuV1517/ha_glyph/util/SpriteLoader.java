@@ -33,6 +33,10 @@ public class SpriteLoader {
         return loadSpriteFromAssets("sprites/HA-off.json");
     }
 
+    public Bitmap loadErrorSprite() {
+        return loadSpriteFromAssets("sprites/HA-err.json");
+    }
+
     private Bitmap loadSpriteFromAssets(String fileName) {
         try {
             String jsonString = loadJsonFromAssets(fileName);
@@ -115,19 +119,26 @@ public class SpriteLoader {
     }
 
     private Bitmap createErrorBitmap() {
-        // Create a simple red X pattern for error cases
-        Bitmap bitmap = Bitmap.createBitmap(25, 25, Bitmap.Config.ARGB_8888);
+        // Try to load the HA-err.json sprite first, but avoid recursion
+        try {
+            String jsonString = loadJsonFromAssets("sprites/HA-err.json");
+            return parseSpriteToBitmap(jsonString);
+        } catch (Exception e) {
+            Log.w(TAG, "Failed to load HA-err.json sprite, creating fallback pattern", e);
+            // Create a simple red X pattern for error cases as fallback
+            Bitmap bitmap = Bitmap.createBitmap(25, 25, Bitmap.Config.ARGB_8888);
 
-        for (int i = 0; i < 25; i++) {
-            for (int j = 0; j < 25; j++) {
-                if (i == j || i == 24 - j) {
-                    bitmap.setPixel(i, j, Color.RED);
-                } else {
-                    bitmap.setPixel(i, j, Color.TRANSPARENT);
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 25; j++) {
+                    if (i == j || i == 24 - j) {
+                        bitmap.setPixel(i, j, Color.RED);
+                    } else {
+                        bitmap.setPixel(i, j, Color.TRANSPARENT);
+                    }
                 }
             }
-        }
 
-        return bitmap;
+            return bitmap;
+        }
     }
 }

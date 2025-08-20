@@ -45,6 +45,7 @@ public class HomeAssistantToyService extends Service {
     // Bitmap sprites for on/off states
     private Bitmap onSprite;
     private Bitmap offSprite;
+    private Bitmap errorSprite;
 
     private SpriteLoader spriteLoader;
 
@@ -115,6 +116,7 @@ public class HomeAssistantToyService extends Service {
             // Load your custom sprites from JSON
             onSprite = spriteLoader.loadOnSprite();
             offSprite = spriteLoader.loadOffSprite();
+            errorSprite = spriteLoader.loadErrorSprite();
             Log.d(TAG, "Successfully loaded custom sprites from JSON");
         } catch (Exception e) {
             Log.e(TAG, "Failed to load custom sprites, using defaults", e);
@@ -127,6 +129,7 @@ public class HomeAssistantToyService extends Service {
         // Create default 25x25 bitmaps for on/off states (fallback)
         onSprite = createDefaultOnSprite();
         offSprite = createDefaultOffSprite();
+        errorSprite = spriteLoader.loadErrorSprite(); // Try to load error sprite even if others fail
     }
 
     private Bitmap createDefaultOnSprite() {
@@ -235,24 +238,31 @@ public class HomeAssistantToyService extends Service {
         if (mGM == null) return;
 
         try {
-            // Create a red error pattern
-            Bitmap errorBitmap = Bitmap.createBitmap(25, 25, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(errorBitmap);
-            Paint paint = new Paint();
-            paint.setColor(Color.RED);
-            canvas.drawRect(0, 0, 25, 25, paint);
+            // Use the error sprite from HA-err.json instead of creating shapes
+            Bitmap spriteToShow = errorSprite != null ? errorSprite : spriteLoader.loadErrorSprite();
+
+            if (spriteToShow == null) {
+                // Fallback to a simple error pattern if sprite loading fails
+                spriteToShow = Bitmap.createBitmap(25, 25, Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(spriteToShow);
+                Paint paint = new Paint();
+                paint.setColor(Color.RED);
+                canvas.drawRect(0, 0, 25, 25, paint);
+            }
 
             GlyphMatrixObject.Builder objectBuilder = new GlyphMatrixObject.Builder();
             GlyphMatrixObject matrixObject = objectBuilder
-                    .setImageSource(errorBitmap)
+                    .setImageSource(spriteToShow)
                     .setPosition(0, 0)
+                    .setScale(100)
+                    .setBrightness(255)
                     .build();
 
             GlyphMatrixFrame.Builder frameBuilder = new GlyphMatrixFrame.Builder();
             GlyphMatrixFrame frame = frameBuilder.addTop(matrixObject).build(this);
 
             mGM.setMatrixFrame(frame.render());
-            Log.d(TAG, "Displayed error state");
+            Log.d(TAG, "Displayed error state using HA-err.json sprite");
         } catch (Exception e) {
             Log.e(TAG, "Error displaying error state", e);
         }
