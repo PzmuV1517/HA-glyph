@@ -2,4 +2,7 @@
     <string name="app_name">HA-Glyph</string>
     <string name="toy_name">Home Assistant Toggle</string>
     <string name="toy_summary">Toggle your Home Assistant devices with the Glyph Button</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_content" translatable="false">This Privacy Policy describes how your personal information is handled in the HA-Glyph application.\n\nInformation We Collect\nHA-Glyph does not collect, store, or transmit any personal information, with the exception of the Home Assistant URL and access token you provide. This information is stored locally on your device and is used solely for the purpose of connecting to your Home Assistant instance.\n\nHow We Use Your Information\nThe Home Assistant URL and access token are used exclusively to establish a connection with your Home Assistant server and to control the devices you select. This information is not shared with any third parties.\n\nData Security\nYour Home Assistant credentials are stored in the app\'s private storage on your device. While we take reasonable measures to protect your information, please be aware that no security measures are perfect or impenetrable.\n\nChanges to This Privacy Policy\nWe may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</string>
 </resources>

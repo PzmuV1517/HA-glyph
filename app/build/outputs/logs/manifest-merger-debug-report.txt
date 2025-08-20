@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-59:12
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:2:1-64:12
 MERGED from [glyph-matrix-sdk-1.0.aar] C:\Users\child\.gradle\caches\8.13\transforms\b9947db748ebb4424ebae60b975b3f3e\transformed\glyph-matrix-sdk-1.0\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\child\.gradle\caches\8.13\transforms\dd66567268b16531d74704a824cda5df\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\child\.gradle\caches\8.13\transforms\634884b8660d6e9a094cbc89b31946ff\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -70,8 +70,8 @@ ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidMani
 	android:name
 		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:7:22-76
 application
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:9:5-57:19
-INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:9:5-57:19
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:9:5-62:19
+INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:9:5-62:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\child\.gradle\caches\8.13\transforms\dd66567268b16531d74704a824cda5df\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\child\.gradle\caches\8.13\transforms\dd66567268b16531d74704a824cda5df\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\child\.gradle\caches\8.13\transforms\634884b8660d6e9a094cbc89b31946ff\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -126,48 +126,56 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
 		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:25:27-74
+activity#com.PzmuV1517.ha_glyph.PrivacyPolicyActivity
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:29:9-32:58
+	android:parentActivityName
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:32:13-55
+	android:label
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:31:13-57
+	android:name
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:30:13-50
 service#com.PzmuV1517.ha_glyph.HomeAssistantToyService
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:29:9-55:19
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:34:9-60:19
 	android:exported
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:31:13-36
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:30:13-52
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:35:13-52
 intent-filter#action:name:com.nothing.glyph.TOY
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:32:13-34:29
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:37:13-39:29
 action#com.nothing.glyph.TOY
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:33:17-63
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:38:17-63
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:33:25-61
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:38:25-61
 meta-data#com.nothing.glyph.toy.name
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:36:13-38:54
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:41:13-43:54
 	android:resource
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:38:17-52
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:43:17-52
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:37:17-58
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:42:17-58
 meta-data#com.nothing.glyph.toy.image
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:40:13-42:63
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:45:13-47:63
 	android:resource
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:42:17-61
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:47:17-61
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:41:17-59
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:46:17-59
 meta-data#com.nothing.glyph.toy.summary
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:44:13-46:57
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:49:13-51:57
 	android:resource
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:46:17-55
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:51:17-55
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:45:17-61
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:50:17-61
 meta-data#com.nothing.glyph.toy.longpress
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:48:13-50:36
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:53:13-55:36
 	android:value
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:50:17-34
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:55:17-34
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:49:17-63
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:54:17-63
 meta-data#com.nothing.glyph.toy.aod_support
-ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:52:13-54:36
+ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:57:13-59:36
 	android:value
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:54:17-34
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:59:17-34
 	android:name
-		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:53:17-65
+		ADDED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml:58:17-65
 uses-sdk
 INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\child\AndroidStudioProjects\HAGlyph\app\src\main\AndroidManifest.xml

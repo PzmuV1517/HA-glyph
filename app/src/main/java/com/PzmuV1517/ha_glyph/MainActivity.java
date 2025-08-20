@@ -1,5 +1,6 @@
 package com.PzmuV1517.ha_glyph;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 public class MainActivity extends AppCompatActivity {
     private EditText etUrl, etToken;
     private Button btnConnect, btnDisconnect;
+    private TextView btnPrivacy;
     private TextView tvStatus, tvSelectedDevice;
     private RecyclerView rvDevices;
     private ProgressBar progressBar;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         etToken = findViewById(R.id.et_token);
         btnConnect = findViewById(R.id.btn_connect);
         btnDisconnect = findViewById(R.id.btn_disconnect);
+        btnPrivacy = findViewById(R.id.tv_privacy_link);
         tvStatus = findViewById(R.id.tv_status);
         tvSelectedDevice = findViewById(R.id.tv_selected_device);
         rvDevices = findViewById(R.id.rv_devices);
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnConnect.setOnClickListener(v -> connectToHomeAssistant());
         btnDisconnect.setOnClickListener(v -> disconnectFromHomeAssistant());
+        btnPrivacy.setOnClickListener(v -> startActivity(new Intent(this, PrivacyPolicyActivity.class)));
     }
 
     private void initData() {

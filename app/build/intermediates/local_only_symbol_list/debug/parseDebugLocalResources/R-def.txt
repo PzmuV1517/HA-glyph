@@ -22,6 +22,9 @@ id rv_devices
 id tv_device_name
 id tv_devices_label
 id tv_entity_id
+id tv_privacy_link
+id tv_privacy_policy_content
+id tv_privacy_policy_title
 id tv_selected_device
 id tv_state
 id tv_status
@@ -29,10 +32,14 @@ id tv_title
 id tv_token_label
 id tv_url_label
 layout activity_main
+layout activity_privacy_policy
 layout item_device
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string privacy_policy
+string privacy_policy_content
+string privacy_policy_title
 string toy_name
 string toy_summary
 style Theme.HAGlyph

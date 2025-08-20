@@ -26,6 +26,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:label="@string/privacy_policy_title"
+            android:parentActivityName=".MainActivity" />
+
         <service
             android:name=".HomeAssistantToyService"
             android:exported="true">

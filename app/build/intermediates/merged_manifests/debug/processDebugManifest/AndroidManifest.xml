@@ -40,6 +40,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.PzmuV1517.ha_glyph.PrivacyPolicyActivity"
+            android:label="@string/privacy_policy_title"
+            android:parentActivityName="com.PzmuV1517.ha_glyph.MainActivity" />
 
         <service
             android:name="com.PzmuV1517.ha_glyph.HomeAssistantToyService"

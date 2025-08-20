@@ -3593,6 +3593,9 @@ id triangle
 id tv_device_name
 id tv_devices_label
 id tv_entity_id
+id tv_privacy_link
+id tv_privacy_policy_content
+id tv_privacy_policy_title
 id tv_selected_device
 id tv_state
 id tv_status
@@ -3737,6 +3740,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_privacy_policy
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4041,6 +4045,9 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string privacy_policy
+string privacy_policy_content
+string privacy_policy_title
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
