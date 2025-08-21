@@ -11,40 +11,57 @@
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_device_name"
+        <!-- Existing content -->
+        <LinearLayout
+            android:id="@+id/content_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Device Name"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tv_entity_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="entity.id"
-            android:textSize="12sp"
-            android:textColor="?android:attr/textColorSecondary"
-            android:layout_marginTop="4dp" />
+            <TextView
+                android:id="@+id/tv_device_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Device Name"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OFF"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/state_background"
-            android:padding="4dp" />
+            <TextView
+                android:id="@+id/tv_entity_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="entity.id"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_marginTop="4dp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OFF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/state_background"
+                android:padding="4dp" />
+        </LinearLayout>
 
+        <!-- Selection indicator -->
+        <ImageView
+            android:id="@+id/iv_selected_indicator"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="6dp"
+            android:visibility="gone"
+            android:contentDescription="Selected"
+            android:src="@drawable/selected_dot" />
+
+    </FrameLayout>
 </androidx.cardview.widget.CardView>

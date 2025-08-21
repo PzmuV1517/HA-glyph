@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="device_selected_tint">#FFE0F7FF</color>
     <color name="red_200">#FFFF5555</color>
     <color name="red_500">#FFFF0000</color>
     <color name="red_700">#FFCC0000</color>

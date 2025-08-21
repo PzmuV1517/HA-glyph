@@ -1,6 +1,7 @@
 R_DEF: Internal format may change without notice
 local
 color black
+color device_selected_tint
 color red_200
 color red_500
 color red_700
@@ -10,12 +11,16 @@ color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable img_toy_preview
+drawable selected_dot
 drawable state_background
 id btn_connect
 id btn_disconnect
 id card_device
+id content_container
+id et_search
 id et_token
 id et_url
+id iv_selected_indicator
 id ll_buttons
 id progress_bar
 id rv_devices

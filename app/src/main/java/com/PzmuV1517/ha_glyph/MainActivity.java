@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +26,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText etUrl, etToken;
+    private EditText etUrl, etToken, etSearch; // added etSearch
     private Button btnConnect, btnDisconnect;
     private TextView btnPrivacy;
     private TextView tvStatus, tvSelectedDevice;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         etUrl = findViewById(R.id.et_url);
         etToken = findViewById(R.id.et_token);
+        etSearch = findViewById(R.id.et_search); // init search
         btnConnect = findViewById(R.id.btn_connect);
         btnDisconnect = findViewById(R.id.btn_disconnect);
         btnPrivacy = findViewById(R.id.tv_privacy_link);
@@ -64,6 +67,20 @@ public class MainActivity extends AppCompatActivity {
         btnConnect.setOnClickListener(v -> connectToHomeAssistant());
         btnDisconnect.setOnClickListener(v -> disconnectFromHomeAssistant());
         btnPrivacy.setOnClickListener(v -> startActivity(new Intent(this, PrivacyPolicyActivity.class)));
+
+        // Search filtering
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                deviceAdapter.filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 
     private void initData() {
@@ -76,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         String savedUrl = prefsManager.getHomeAssistantUrl();
         String savedToken = prefsManager.getHomeAssistantToken();
         String selectedEntity = prefsManager.getSelectedEntityName();
+        String selectedEntityId = prefsManager.getSelectedEntity(); // id
 
         if (savedUrl != null) {
             etUrl.setText(savedUrl);
@@ -85,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if (selectedEntity != null) {
             tvSelectedDevice.setText("Selected: " + selectedEntity);
+            if (selectedEntityId != null) {
+                deviceAdapter.setSelectedEntityId(selectedEntityId);
+            }
         }
 
         if (prefsManager.isConfigured()) {
@@ -187,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
     private void onDeviceSelected(HomeAssistantEntity entity) {
         prefsManager.setSelectedEntity(entity.getEntityId(), entity.getFriendlyName());
         tvSelectedDevice.setText("Selected: " + entity.getFriendlyName());
+        deviceAdapter.setSelectedEntityId(entity.getEntityId()); // update highlight
         Toast.makeText(this, "Selected: " + entity.getFriendlyName() + "\nYou can now use the Glyph toy!", Toast.LENGTH_LONG).show();
     }
 

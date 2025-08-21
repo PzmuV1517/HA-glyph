@@ -1414,6 +1414,7 @@ color design_fab_stroke_top_inner_color
 color design_fab_stroke_top_outer_color
 color design_icon_tint
 color design_snackbar_background_color
+color device_selected_tint
 color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
@@ -3099,6 +3100,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable selected_dot
 drawable state_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -3233,6 +3235,7 @@ id constraint
 id container
 id content
 id contentPanel
+id content_container
 id contiguous
 id continuousVelocity
 id coordinator
@@ -3286,6 +3289,7 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id et_search
 id et_token
 id et_url
 id exitUntilCollapsed
@@ -3338,6 +3342,7 @@ id inward
 id is_pooling_container_tag
 id italic
 id item_touch_helper_previous_elevation
+id iv_selected_indicator
 id jumpToEnd
 id jumpToStart
 id labeled
