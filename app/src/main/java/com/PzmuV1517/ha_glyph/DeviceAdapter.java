@@ -1,8 +1,17 @@
 package com.PzmuV1517.ha_glyph;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +29,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
     private List<HomeAssistantEntity> filteredDevices; // filtered view
     private OnDeviceClickListener listener;
     private String selectedEntityId; // currently selected
+    private String lastAnimatedSelectedId; // track newly selected to animate once
 
     public interface OnDeviceClickListener {
         void onDeviceClick(HomeAssistantEntity entity);
@@ -44,6 +54,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         HomeAssistantEntity entity = filteredDevices.get(position);
         boolean selected = selectedEntityId != null && selectedEntityId.equals(entity.getEntityId());
         holder.bind(entity, listener, selected);
+        if (selected && lastAnimatedSelectedId != null && lastAnimatedSelectedId.equals(entity.getEntityId())) {
+            holder.playSelectionAnimation();
+        }
     }
 
     @Override
@@ -73,7 +86,13 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
     }
 
     public void setSelectedEntityId(String id) {
-        this.selectedEntityId = id;
+        if (id == null || (selectedEntityId != null && selectedEntityId.equals(id))) {
+            selectedEntityId = id;
+            lastAnimatedSelectedId = null;
+        } else {
+            selectedEntityId = id;
+            lastAnimatedSelectedId = id; // animate this selection
+        }
         notifyDataSetChanged();
     }
 
@@ -84,6 +103,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         final TextView tvState;
         final int defaultCardColor;
         final ImageView ivSelected;
+        final FrameLayout rootContainer;
 
         public DeviceViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -92,6 +112,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
             tvEntityId = itemView.findViewById(R.id.tv_entity_id);
             tvState = itemView.findViewById(R.id.tv_state);
             ivSelected = itemView.findViewById(R.id.iv_selected_indicator);
+            rootContainer = itemView.findViewById(R.id.root_container);
             defaultCardColor = cardView.getCardBackgroundColor().getDefaultColor();
         }
 
@@ -114,6 +135,68 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
                     listener.onDeviceClick(entity);
                 }
             });
+        }
+
+        void playSelectionAnimation() {
+            // Animate the green dot popping in
+            ivSelected.setScaleX(0f);
+            ivSelected.setScaleY(0f);
+            ivSelected.setAlpha(0f);
+            ivSelected.setVisibility(View.VISIBLE);
+            AnimatorSet popSet = new AnimatorSet();
+            ObjectAnimator sx = ObjectAnimator.ofFloat(ivSelected, View.SCALE_X, 0f, 1f);
+            ObjectAnimator sy = ObjectAnimator.ofFloat(ivSelected, View.SCALE_Y, 0f, 1f);
+            ObjectAnimator a = ObjectAnimator.ofFloat(ivSelected, View.ALPHA, 0f, 1f);
+            sx.setInterpolator(new OvershootInterpolator());
+            sy.setInterpolator(new OvershootInterpolator());
+            popSet.setDuration(300);
+            popSet.playTogether(sx, sy, a);
+            popSet.start();
+
+            // Particle explosion
+            int particleCount = 10;
+            float maxRadius = dp(36);
+            for (int i = 0; i < particleCount; i++) {
+                final View particle = new View(itemView.getContext());
+                int size = (int) dp(6);
+                FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(size, size, Gravity.END | Gravity.BOTTOM);
+                lp.setMargins(0,0, (int) dp(12), (int) dp(12)); // start near dot
+                particle.setLayoutParams(lp);
+                particle.setBackground(createParticleBackground());
+                particle.setAlpha(0f);
+                rootContainer.addView(particle);
+
+                double angle = (2 * Math.PI / particleCount) * i + Math.random()*0.5; // slight randomness
+                float targetX = (float) (Math.cos(angle) * maxRadius);
+                float targetY = (float) (Math.sin(angle) * maxRadius);
+
+                ObjectAnimator tx = ObjectAnimator.ofFloat(particle, View.TRANSLATION_X, 0f, -targetX); // negative because Gravity.END
+                ObjectAnimator ty = ObjectAnimator.ofFloat(particle, View.TRANSLATION_Y, 0f, -targetY); // negative because Gravity.BOTTOM
+                ObjectAnimator psx = ObjectAnimator.ofFloat(particle, View.SCALE_X, 1f, 0.2f);
+                ObjectAnimator psy = ObjectAnimator.ofFloat(particle, View.SCALE_Y, 1f, 0.2f);
+                ObjectAnimator pa = ObjectAnimator.ofFloat(particle, View.ALPHA, 0f, 1f, 0f);
+                AnimatorSet set = new AnimatorSet();
+                set.playTogether(tx, ty, psx, psy, pa);
+                set.setInterpolator(new AccelerateInterpolator());
+                set.setStartDelay(i * 15L);
+                set.setDuration(450);
+                set.addListener(new AnimatorListenerAdapter() {
+                    @Override public void onAnimationEnd(Animator animation) { rootContainer.removeView(particle); }
+                });
+                set.start();
+            }
+        }
+
+        private float dp(float v) {
+            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, v, itemView.getResources().getDisplayMetrics());
+        }
+
+        private android.graphics.drawable.Drawable createParticleBackground() {
+            android.graphics.drawable.GradientDrawable d = new android.graphics.drawable.GradientDrawable();
+            d.setShape(android.graphics.drawable.GradientDrawable.OVAL);
+            d.setColor(0xFF4CAF50); // green
+            d.setStroke((int) dp(1), 0xFF2E7D32);
+            return d;
         }
     }
 }

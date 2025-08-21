@@ -23,6 +23,7 @@ id et_url
 id iv_selected_indicator
 id ll_buttons
 id progress_bar
+id root_container
 id rv_devices
 id tv_device_name
 id tv_devices_label
