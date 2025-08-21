@@ -49,21 +49,68 @@ public class HomeAssistantToyService extends Service {
 
     private SpriteLoader spriteLoader;
 
+    private boolean initialized = false;
+    private int consecutiveErrors = 0;
+    private static final int MAX_CONSECUTIVE_ERRORS_BEFORE_ERROR_SPRITE = 3;
+    private final Runnable reconnectRunnable = new Runnable() {
+        @Override public void run() {
+            if (mGM != null && mCallback != null) {
+                try {
+                    Log.d(TAG, "Attempting GlyphMatrixManager re-init");
+                    mGM.init(mCallback);
+                } catch (Exception e) {
+                    Log.e(TAG, "Re-init failed, scheduling retry", e);
+                    mainHandler.postDelayed(this, 5000);
+                }
+            }
+        }
+    };
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        init();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // Ensure still initialized if system restarted service
+        if (!initialized) {
+            init();
+        }
+        return START_STICKY; // request restart after being killed
+    }
+
+    @Override
+    public void onDestroy() {
+        cleanup();
+        super.onDestroy();
+    }
+
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(TAG, "Service bound");
-        init();
+        if (!initialized) {
+            init();
+        }
         return serviceMessenger.getBinder();
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
         Log.d(TAG, "Service unbound");
-        cleanup();
-        return false;
+        // Do NOT cleanup fully; keep monitoring so glyph continues while app UI gone
+        return true; // allow onRebind
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        super.onRebind(intent);
+        Log.d(TAG, "Service rebound");
     }
 
     private void init() {
+        if (initialized) return;
         Log.d(TAG, "Initializing HomeAssistant Glyph Toy");
 
         prefsManager = new PreferencesManager(this);
@@ -71,6 +118,7 @@ public class HomeAssistantToyService extends Service {
         mainHandler = new Handler(Looper.getMainLooper());
         updateHandler = new Handler(Looper.getMainLooper());
         spriteLoader = new SpriteLoader(this);
+        consecutiveErrors = 0;
 
         // Load configuration
         String url = prefsManager.getHomeAssistantUrl();
@@ -89,26 +137,32 @@ public class HomeAssistantToyService extends Service {
             @Override
             public void onServiceConnected(ComponentName componentName) {
                 Log.d(TAG, "Glyph Matrix service connected");
-                mGM.register(Glyph.DEVICE_23112);
+                try { mGM.register(Glyph.DEVICE_23112); } catch (Exception e) { Log.e(TAG, "Register failed", e); }
                 startDeviceMonitoring();
             }
 
             @Override
             public void onServiceDisconnected(ComponentName componentName) {
-                Log.d(TAG, "Glyph Matrix service disconnected");
+                Log.d(TAG, "Glyph Matrix service disconnected, scheduling re-init");
+                stopDeviceMonitoring();
+                mainHandler.removeCallbacks(reconnectRunnable);
+                mainHandler.postDelayed(reconnectRunnable, 3000);
             }
         };
-        mGM.init(mCallback);
+        try { mGM.init(mCallback); } catch (Exception e) { Log.e(TAG, "Initial mGM.init failed", e); mainHandler.postDelayed(reconnectRunnable, 3000); }
+        initialized = true;
     }
 
     private void cleanup() {
         Log.d(TAG, "Cleaning up service");
         stopDeviceMonitoring();
+        mainHandler.removeCallbacks(reconnectRunnable);
         if (mGM != null) {
-            mGM.unInit();
+            try { mGM.unInit(); } catch (Exception ignore) {}
             mGM = null;
         }
         mCallback = null;
+        initialized = false;
     }
 
     private void initSpritesFromJson() {
@@ -193,19 +247,31 @@ public class HomeAssistantToyService extends Service {
             @Override
             public void onSuccess(HomeAssistantEntity entity) {
                 mainHandler.post(() -> {
+                    consecutiveErrors = 0; // reset error streak
                     boolean newState = entity.isOn();
                     if (newState != isDeviceOn) {
                         isDeviceOn = newState;
                         Log.d(TAG, "Device state changed to: " + (isDeviceOn ? "ON" : "OFF"));
+                        displayCurrentState();
+                    } else if (onSprite != null && offSprite != null) {
+                        // Periodically re-push frame to guard against glyph clearing
+                        displayCurrentState();
                     }
-                    displayCurrentState();
                 });
             }
 
             @Override
             public void onError(String error) {
-                Log.e(TAG, "Failed to get device state: " + error);
-                mainHandler.post(() -> displayErrorState());
+                Log.w(TAG, "Transient device state fetch error: " + error);
+                mainHandler.post(() -> {
+                    consecutiveErrors++;
+                    if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS_BEFORE_ERROR_SPRITE) {
+                        displayErrorState();
+                    } else {
+                        // Keep last known state visible instead of flashing error
+                        displayCurrentState();
+                    }
+                });
             }
         });
     }
