@@ -13,6 +13,7 @@ drawable ic_launcher_foreground
 drawable img_toy_preview
 drawable selected_dot
 drawable state_background
+id btn_back
 id btn_connect
 id btn_disconnect
 id card_device
@@ -25,6 +26,7 @@ id ll_buttons
 id progress_bar
 id root_container
 id rv_devices
+id scroll_header
 id tv_device_name
 id tv_devices_label
 id tv_entity_id

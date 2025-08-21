@@ -1,4 +1,4 @@
-#Fri Aug 22 02:23:49 EEST 2025
+#Fri Aug 22 02:27:31 EEST 2025
 base.0=C\:\\Users\\child\\AndroidStudioProjects\\HAGlyph\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\child\\AndroidStudioProjects\\HAGlyph\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\child\\AndroidStudioProjects\\HAGlyph\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex

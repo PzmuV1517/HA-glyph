@@ -3203,6 +3203,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_back
 id btn_connect
 id btn_disconnect
 id buttonPanel
@@ -3495,6 +3496,7 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
+id scroll_header
 id scrollable
 id search_badge
 id search_bar
