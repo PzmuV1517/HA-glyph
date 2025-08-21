@@ -31,7 +31,6 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.HAGlyph" >
         <activity
             android:name="com.PzmuV1517.ha_glyph.MainActivity"

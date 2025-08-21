@@ -40,6 +40,10 @@
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "com.PzmuV1517.ha_glyph.app-debug-33:/layout_activity_main.xml.flat",
+        "source": "com.PzmuV1517.ha_glyph.app-main-35:/layout/activity_main.xml"
+    },
+    {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\drawable_selected_dot.xml.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\drawable\\selected_dot.xml"
     },
@@ -50,6 +54,10 @@
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "com.PzmuV1517.ha_glyph.app-debug-33:/layout_activity_privacy_policy.xml.flat",
+        "source": "com.PzmuV1517.ha_glyph.app-main-35:/layout/activity_privacy_policy.xml"
     },
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\mipmap-hdpi_ic_launcher.png.flat",
@@ -74,10 +82,6 @@
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\layout_item_device.xml.flat",
         "source": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-main-35:\\layout\\item_device.xml"
-    },
-    {
-        "merged": "com.PzmuV1517.ha_glyph.app-debug-33:/layout_item_device.xml.flat",
-        "source": "com.PzmuV1517.ha_glyph.app-main-35:/layout/item_device.xml"
     },
     {
         "merged": "C:\\Users\\child\\.gradle\\daemon\\8.13\\com.PzmuV1517.ha_glyph.app-debug-33:\\layout_activity_main.xml.flat",

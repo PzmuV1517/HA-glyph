@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
     android:padding="0dp"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <!-- Scrollable header section so smaller phones don't clip content -->
